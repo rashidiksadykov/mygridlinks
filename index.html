@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Layout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-blue-500 text-white p-4">
+    <div class="container mx-auto text-center font-bold text-xl">Header</div>
+  </header>
+
+  <div class="flex flex-1">
+    <!-- Left Sidebar -->
+    <aside class="w-1/4 bg-gray-200 p-4 hidden md:block">
+      <div class="sticky top-0">
+        <h2 class="font-bold text-lg mb-4">Sort By</h2>
+        <ul>
+          <li class="mb-2 cursor-pointer hover:text-blue-500" onclick="showAllBlocks()">Show All</li>
+          <li class="mb-2 cursor-pointer hover:text-blue-500" onclick="filterBlocks('traffic')">Traffic</li>
+          <li class="mb-2 cursor-pointer hover:text-blue-500" onclick="filterBlocks('advertise')">Advertise</li>
+          <li class="mb-2 cursor-pointer hover:text-blue-500" onclick="filterBlocks('freecrypto')">Free crypto</li>
+          <li class="mb-2 cursor-pointer hover:text-blue-500" onclick="filterBlocks('freecryptonm')">FCNMW</li>
+          <li class="mb-2 cursor-pointer hover:text-blue-500" onclick="filterBlocks('wallets')">Wallets</li>
+          <li class="mb-2 cursor-pointer hover:text-blue-500" onclick="filterBlocks('wallets')">Affiliate</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-4">
+      <div id="grid-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Card Item -->
+        <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center category-traffic">
+          <img src="https://via.placeholder.com/100" alt="Avatar" class="w-24 h-24 rounded-full mb-4">
+          <h3 class="font-bold text-lg">Shoes</h3>
+          <p class="text-gray-600 text-sm text-center mb-4">Comfortable and stylish shoes.</p>
+          <div class="flex space-x-2">
+            <img src="https://via.placeholder.com/32" alt="Icon 1" class="w-8 h-8">
+            <img src="https://via.placeholder.com/32" alt="Icon 2" class="w-8 h-8">
+            <img src="https://via.placeholder.com/32" alt="Icon 3" class="w-8 h-8">
+          </div>
+        </div>
+        <!-- Repeat Card Items -->
+        <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center category-advertise">
+          <img src="https://via.placeholder.com/100" alt="Avatar" class="w-24 h-24 rounded-full mb-4">
+          <h3 class="font-bold text-lg">Shirts</h3>
+          <p class="text-gray-600 text-sm text-center mb-4">Elegant and professional shirts.</p>
+          <div class="flex space-x-2">
+            <img src="https://via.placeholder.com/32" alt="Icon 1" class="w-8 h-8">
+            <img src="https://via.placeholder.com/32" alt="Icon 2" class="w-8 h-8">
+            <img src="https://via.placeholder.com/32" alt="Icon 3" class="w-8 h-8">
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md flex flex-col items-center category-freecrypto">
+          <img src="https://via.placeholder.com/100" alt="Avatar" class="w-24 h-24 rounded-full mb-4">
+          <h3 class="font-bold text-lg">Accessories</h3>
+          <p class="text-gray-600 text-sm text-center mb-4">Trendy and practical accessories.</p>
+          <div class="flex space-x-2">
+            <img src="https://via.placeholder.com/32" alt="Icon 1" class="w-8 h-8">
+            <img src="https://via.placeholder.com/32" alt="Icon 2" class="w-8 h-8">
+            <img src="https://via.placeholder.com/32" alt="Icon 3" class="w-8 h-8">
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-4">
+    
+  </footer>
+
+  <script>
+    function filterBlocks(category) {
+      const blocks = document.querySelectorAll('#grid-container > div');
+      blocks.forEach(block => {
+        if (block.classList.contains(`category-${category}`)) {
+          block.style.display = 'block';
+        } else {
+          block.style.display = 'none';
+        }
+      });
+    }
+
+    function showAllBlocks() {
+      const blocks = document.querySelectorAll('#grid-container > div');
+      blocks.forEach(block => {
+        block.style.display = 'block';
+      });
+    }
+  </script>
+</body>
+</html>
